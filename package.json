@@ -47,6 +47,7 @@
     "@angular/router": "^10.1.0",
     "@ngneat/lib": "^1.0.5",
     "@nrwl/angular": "10.4.4",
+    "angular-svg-icon": "^10.0.0",
     "rxjs": "~6.5.5",
     "tslib": "^2.0.0",
     "zone.js": "^0.10.2"

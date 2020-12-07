@@ -6,6 +6,7 @@
     "@angular/core": "^10.1.6"
   },
   "dependencies": {
-    "tslib": "^2.0.0"
+    "tslib": "^2.0.0",
+    "angular-svg-icon": "^10.0.0"
   }
 }
