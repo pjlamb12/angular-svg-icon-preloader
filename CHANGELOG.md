@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [0.1.0](https://github.com/pjlamb12/angular-svg-icon-preloader/compare/v0.0.2...v0.1.0) (2020-12-08)
+
+
+### ⚠ BREAKING CHANGES
+
+* move angular-svg-icon to peer dependencies
+
+### chore
+
+* 🤖 update peer dependencies ([ce8c778](https://github.com/pjlamb12/angular-svg-icon-preloader/commit/ce8c778e202b099deb4bc9c0330725123cdc5cd5))
+
 ### [0.0.2](https://github.com/pjlamb12/angular-svg-icon-preloader/compare/v0.0.1...v0.0.2) (2020-12-08)
 
 ### 0.0.1 (2020-12-08)
