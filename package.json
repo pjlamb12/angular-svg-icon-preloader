@@ -33,7 +33,7 @@
 		"build:lib": "ng build angular-svg-icon-preloader && npm run build:copy-readme",
 		"build:copy-readme": "cp ./README.md ./dist/libs/angular-svg-icon-preloader",
 		"test:lib": "ng test angular-svg-icon-preloader",
-		"release": "cd projects/angular-svg-icon-preloader && standard-version --infile ../../CHANGELOG.md",
+		"release": "cd libs/angular-svg-icon-preloader && standard-version --infile ../../CHANGELOG.md",
 		"test:lib:headless": "cross-env CI=true npm run test:lib"
 	},
 	"private": true,
