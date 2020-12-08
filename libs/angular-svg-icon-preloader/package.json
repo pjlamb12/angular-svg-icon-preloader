@@ -27,10 +27,10 @@
 	"license": "MIT",
 	"peerDependencies": {
 		"@angular/common": "10 - 11",
-		"@angular/core": "10 - 11"
+		"@angular/core": "10 - 11",
+		"angular-svg-icon": "10 - 11"
 	},
 	"dependencies": {
-		"tslib": "^2.0.0",
-		"angular-svg-icon": "10 - 11"
+		"tslib": "^2.0.0"
 	}
 }
