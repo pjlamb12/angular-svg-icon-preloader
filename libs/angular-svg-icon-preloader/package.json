@@ -26,9 +26,9 @@
 	},
 	"license": "MIT",
 	"peerDependencies": {
-		"@angular/common": "10 - 11",
-		"@angular/core": "10 - 11",
-		"angular-svg-icon": "10 - 11"
+		"@angular/common": ">=10",
+		"@angular/core": ">=10",
+		"angular-svg-icon": ">=10"
 	},
 	"dependencies": {
 		"tslib": "^2.0.0"
