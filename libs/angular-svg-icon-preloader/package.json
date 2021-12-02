@@ -1,36 +1,32 @@
 {
-	"name": "angular-svg-icon-preloader",
-	"version": "2.0.0",
-	"homepage": "https://github.com/pjlamb12/angular-svg-icon-preloader",
-	"description": "An Angular service for managing directed acyclic graphs",
-	"bugs": {
-		"url": "https://github.com/pjlamb12/angular-svg-icon-preloader/issues"
-	},
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/pjlamb12/angular-svg-icon-preloader"
-	},
-	"keywords": [
-		"angular",
-		"svg",
-		"svg icon",
-		"icon"
-	],
-	"author": {
-		"name": "Preston Lamb",
-		"email": "preston.j.lamb@gmail.com",
-		"url": "https://www.prestonlamb.com"
-	},
-	"publishConfig": {
-		"access": "public"
-	},
-	"license": "MIT",
-	"peerDependencies": {
-		"@angular/common": "^12.0.0",
-		"@angular/core": "^12.0.0",
-		"angular-svg-icon": "^12.0.0"
-	},
-	"dependencies": {
-		"tslib": "^2.3.0"
-	}
+  "name": "angular-svg-icon-preloader",
+  "version": "2.0.1",
+  "homepage": "https://github.com/pjlamb12/angular-svg-icon-preloader",
+  "description": "An Angular service for managing directed acyclic graphs",
+  "bugs": {
+    "url": "https://github.com/pjlamb12/angular-svg-icon-preloader/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pjlamb12/angular-svg-icon-preloader"
+  },
+  "keywords": ["angular", "svg", "svg icon", "icon"],
+  "author": {
+    "name": "Preston Lamb",
+    "email": "preston.j.lamb@gmail.com",
+    "url": "https://www.prestonlamb.com"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "license": "MIT",
+  "peerDependencies": {
+    "@angular/common": "^12.0.0",
+    "@angular/core": "^12.0.0",
+    "angular-svg-icon": "^12.0.0",
+    "rxjs": "^6.5.3 || ^7.0.0"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  }
 }
