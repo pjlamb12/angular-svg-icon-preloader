@@ -21,20 +21,34 @@
 				"accessToken": "NzE4YmY1NGItODE3Zi00NjMyLTk0OWYtOWIzYzQyY2JjZDYxfHJlYWQtd3JpdGU=",
 				"cacheableOperations": ["build", "test", "lint", "e2e"],
 				"canTrackAnalytics": false,
-				"showUsageWarnings": true
+				"showUsageWarnings": true,
+				"parallel": 1
 			}
 		}
 	},
-	"projects": {
-		"angular-svg-icon-preloader-demo": {
-			"tags": []
+	"cli": {
+		"defaultCollection": "@nrwl/angular",
+		"analytics": "947991e5-718d-4b38-95cb-d4d2563cb533"
+	},
+	"defaultProject": "angular-svg-icon-preloader-demo",
+	"generators": {
+		"@nrwl/angular": {
+			"application": {
+				"linter": "eslint"
+			},
+			"library": {
+				"linter": "eslint"
+			},
+			"storybook-configuration": {
+				"linter": "eslint"
+			}
 		},
-		"angular-svg-icon-preloader-demo-e2e": {
-			"tags": [],
-			"implicitDependencies": ["angular-svg-icon-preloader-demo"]
+		"@nrwl/angular:application": {
+			"unitTestRunner": "jest",
+			"e2eTestRunner": "cypress"
 		},
-		"angular-svg-icon-preloader": {
-			"tags": ["scope:lib", "type:util"]
+		"@nrwl/angular:library": {
+			"unitTestRunner": "jest"
 		}
 	}
 }
