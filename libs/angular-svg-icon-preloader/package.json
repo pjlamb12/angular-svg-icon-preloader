@@ -1,6 +1,6 @@
 {
 	"name": "angular-svg-icon-preloader",
-	"version": "4.0.1",
+	"version": "5.0.0",
 	"homepage": "https://github.com/pjlamb12/angular-svg-icon-preloader",
 	"description": "An Angular service for managing directed acyclic graphs",
 	"bugs": {
@@ -26,10 +26,10 @@
 	},
 	"license": "MIT",
 	"peerDependencies": {
-		"@angular/common": "^14.0.0",
-		"@angular/core": "^14.0.0",
-		"@angular/platform-browser-dynamic": "^14.0.0",
-		"angular-svg-icon": "^14.0.0",
+		"@angular/common": "^15.0.0",
+		"@angular/core": "^15.0.0",
+		"@angular/platform-browser-dynamic": "^15.0.0",
+		"angular-svg-icon": "^15.0.0",
 		"rxjs": "^6.5.3 || ^7.4.0"
 	},
 	"dependencies": {
