@@ -3,17 +3,6 @@
 	"affected": {
 		"defaultBase": "main"
 	},
-	"implicitDependencies": {
-		"angular.json": "*",
-		"package.json": {
-			"dependencies": "*",
-			"devDependencies": "*"
-		},
-		"tsconfig.base.json": "*",
-		"tslint.json": "*",
-		".eslintrc.json": "*",
-		"nx.json": "*"
-	},
 	"tasksRunnerOptions": {
 		"default": {
 			"runner": "@nrwl/nx-cloud",
@@ -27,8 +16,7 @@
 		}
 	},
 	"cli": {
-		"defaultCollection": "@nrwl/angular",
-		"analytics": "947991e5-718d-4b38-95cb-d4d2563cb533"
+		"analytics": "94ef2782-1105-4825-b493-f0aafb9bf531"
 	},
 	"defaultProject": "angular-svg-icon-preloader-demo",
 	"generators": {
@@ -49,6 +37,36 @@
 		},
 		"@nrwl/angular:library": {
 			"unitTestRunner": "jest"
+		}
+	},
+	"namedInputs": {
+		"default": ["{projectRoot}/**/*", "sharedGlobals"],
+		"sharedGlobals": [
+			"{workspaceRoot}/angular.json",
+			"{workspaceRoot}/tsconfig.base.json",
+			"{workspaceRoot}/tslint.json",
+			"{workspaceRoot}/nx.json"
+		],
+		"production": [
+			"default",
+			"!{projectRoot}/**/?(*.)+(spec|test).[jt]s?(x)?(.snap)",
+			"!{projectRoot}/tsconfig.spec.json",
+			"!{projectRoot}/jest.config.[jt]s"
+		]
+	},
+	"targetDefaults": {
+		"build": {
+			"inputs": ["production", "^production"]
+		},
+		"e2e": {
+			"inputs": ["default", "^production"]
+		},
+		"test": {
+			"inputs": [
+				"default",
+				"^production",
+				"{workspaceRoot}/jest.preset.js"
+			]
 		}
 	}
 }
