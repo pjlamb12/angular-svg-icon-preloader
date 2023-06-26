@@ -1,0 +1,95 @@
+{
+	"name": "angular-svg-icon-preloader-demo",
+	"$schema": "../../node_modules/nx/schemas/project-schema.json",
+	"projectType": "application",
+	"generators": {
+		"@schematics/angular:component": {
+			"style": "scss"
+		}
+	},
+	"sourceRoot": "apps/angular-svg-icon-preloader-demo/src",
+	"prefix": "angular-svg-icon-preloader",
+	"targets": {
+		"build": {
+			"executor": "@angular-devkit/build-angular:browser",
+			"options": {
+				"outputPath": "dist/apps/angular-svg-icon-preloader-demo",
+				"index": "apps/angular-svg-icon-preloader-demo/src/index.html",
+				"main": "apps/angular-svg-icon-preloader-demo/src/main.ts",
+				"polyfills": "apps/angular-svg-icon-preloader-demo/src/polyfills.ts",
+				"tsConfig": "apps/angular-svg-icon-preloader-demo/tsconfig.app.json",
+				"aot": true,
+				"assets": [
+					"apps/angular-svg-icon-preloader-demo/src/favicon.ico",
+					"apps/angular-svg-icon-preloader-demo/src/assets"
+				],
+				"styles": [
+					"apps/angular-svg-icon-preloader-demo/src/styles.scss"
+				],
+				"scripts": []
+			},
+			"configurations": {
+				"production": {
+					"fileReplacements": [
+						{
+							"replace": "apps/angular-svg-icon-preloader-demo/src/environments/environment.ts",
+							"with": "apps/angular-svg-icon-preloader-demo/src/environments/environment.prod.ts"
+						}
+					],
+					"optimization": true,
+					"outputHashing": "all",
+					"sourceMap": false,
+					"namedChunks": false,
+					"extractLicenses": true,
+					"vendorChunk": false,
+					"buildOptimizer": true,
+					"budgets": [
+						{
+							"type": "initial",
+							"maximumWarning": "2mb",
+							"maximumError": "5mb"
+						},
+						{
+							"type": "anyComponentStyle",
+							"maximumWarning": "6kb",
+							"maximumError": "10kb"
+						}
+					]
+				}
+			}
+		},
+		"serve": {
+			"executor": "@angular-devkit/build-angular:dev-server",
+			"options": {
+				"browserTarget": "angular-svg-icon-preloader-demo:build"
+			},
+			"configurations": {
+				"production": {
+					"browserTarget": "angular-svg-icon-preloader-demo:build:production"
+				}
+			}
+		},
+		"extract-i18n": {
+			"executor": "@angular-devkit/build-angular:extract-i18n",
+			"options": {
+				"browserTarget": "angular-svg-icon-preloader-demo:build"
+			}
+		},
+		"lint": {
+			"executor": "@nrwl/linter:eslint",
+			"options": {
+				"lintFilePatterns": [
+					"apps/angular-svg-icon-preloader-demo/src/**/*.ts"
+				]
+			}
+		},
+		"test": {
+			"executor": "@nrwl/jest:jest",
+			"options": {
+				"jestConfig": "apps/angular-svg-icon-preloader-demo/jest.config.js",
+				"passWithNoTests": true
+			}
+		}
+	},
+	"tags": []
+}
