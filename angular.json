@@ -166,8 +166,5 @@
 			"tags": [],
 			"implicitDependencies": ["angular-svg-icon-preloader-demo"]
 		}
-	},
-	"cli": {
-		"analytics": "94ef2782-1105-4825-b493-f0aafb9bf531"
 	}
 }
