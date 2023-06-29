@@ -1,5 +1,7 @@
 export class AngularSvgIconPreloaderConfig {
-  configUrl: string;
+	configUrl: string;
 
-  constructor() {}
+	constructor() {
+		this.configUrl = './assets/icons.json';
+	}
 }
