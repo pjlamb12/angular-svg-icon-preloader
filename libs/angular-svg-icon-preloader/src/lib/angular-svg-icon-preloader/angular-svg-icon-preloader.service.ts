@@ -1,8 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, Optional } from '@angular/core';
 import { SvgIconRegistryService } from 'angular-svg-icon';
-import { Subject } from 'rxjs';
-import { take } from 'rxjs/operators';
+import { EMPTY, Observable, Subject } from 'rxjs';
+import { catchError, take, tap } from 'rxjs/operators';
 import { AngularSvgIconPreloaderConfig } from '../angular-svg-icon-preloader-config.class';
 import { CustomIconData, IconImageFile } from '../icon.interface';
 
@@ -14,7 +14,7 @@ export class AngularSvgIconPreloaderService {
 	private iconsFileData: {
 		iconImageFiles: IconImageFile[];
 		customIcons: CustomIconData[];
-	};
+	} = { customIcons: [], iconImageFiles: [] };
 	public configSubject: Subject<any> = new Subject<any>();
 
 	constructor(
@@ -27,36 +27,45 @@ export class AngularSvgIconPreloaderService {
 		}
 	}
 
-	loadConfig(): Promise<any> {
+	loadConfig(): Observable<any> {
 		return this._http
-			.get(this.configUrl)
-			.toPromise()
-			.then(
-				(configData: {
-					iconImageFiles: IconImageFile[];
-					customIcons: CustomIconData[];
-				}) => {
-					this.iconsFileData = configData;
+			.get<{
+				iconImageFiles: IconImageFile[];
+				customIcons: CustomIconData[];
+			}>(this.configUrl)
+			.pipe(
+				tap(
+					(configData: {
+						iconImageFiles: IconImageFile[];
+						customIcons: CustomIconData[];
+					}) => {
+						this.iconsFileData = configData;
+						this.loadIcons();
+					}
+				),
+				catchError((err) => {
+					console.error(
+						'An error occurred loading the icons:\n',
+						err,
+						'\nNo icons will be loaded.'
+					);
+					this.iconsFileData = {
+						customIcons: [],
+						iconImageFiles: [],
+					};
 					this.loadIcons();
-				}
-			)
-			.catch((err: any) => {
-				console.error(
-					'An error occurred loading the icons:\n',
-					err,
-					'\nNo icons will be loaded.'
-				);
-				this.iconsFileData = { customIcons: [], iconImageFiles: [] };
-				this.loadIcons();
-			});
+					return EMPTY;
+				})
+			);
 	}
 
 	loadIcons() {
 		this.iconsFileData.iconImageFiles.forEach((i: IconImageFile) => {
-			this._iconRegistry
-				.loadSvg(i.iconPath, i.iconName)
-				.pipe(take(1))
-				.subscribe();
+			const iconObs = this._iconRegistry.loadSvg(i.iconPath, i.iconName);
+
+			if (iconObs) {
+				iconObs.pipe(take(1)).subscribe();
+			}
 		});
 		this.iconsFileData.customIcons.forEach((i: CustomIconData) => {
 			this._iconRegistry.addSvg(i.iconName, i.iconData);

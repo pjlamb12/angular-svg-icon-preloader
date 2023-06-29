@@ -1,6 +1,5 @@
-module.exports = {
-  projects: [
-    '<rootDir>/apps/angular-svg-icon-preloader-demo',
-    '<rootDir>/libs/angular-svg-icon-preloader',
-  ],
+import { getJestProjects } from '@nx/jest';
+
+export default {
+	projects: getJestProjects(),
 };
