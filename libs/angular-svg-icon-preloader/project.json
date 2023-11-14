@@ -9,8 +9,7 @@
 			"executor": "@nrwl/angular:package",
 			"options": {
 				"tsConfig": "libs/angular-svg-icon-preloader/tsconfig.lib.json",
-				"project": "libs/angular-svg-icon-preloader/ng-package.json",
-				"updateBuildableProjectDepsInPackageJson": true
+				"project": "libs/angular-svg-icon-preloader/ng-package.json"
 			},
 			"configurations": {
 				"production": {
