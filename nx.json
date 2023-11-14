@@ -1,22 +1,16 @@
 {
-	"npmScope": "angular-svg-icon-preloader",
 	"affected": {
 		"defaultBase": "main"
 	},
 	"tasksRunnerOptions": {
 		"default": {
-			"runner": "@nrwl/nx-cloud",
 			"options": {
-				"accessToken": "NzE4YmY1NGItODE3Zi00NjMyLTk0OWYtOWIzYzQyY2JjZDYxfHJlYWQtd3JpdGU=",
-				"cacheableOperations": ["build", "test", "lint", "e2e"],
 				"canTrackAnalytics": false,
-				"showUsageWarnings": true,
-				"parallel": 1
+				"showUsageWarnings": true
 			}
 		}
 	},
 	"cli": {
-		"defaultCollection": "@nrwl/angular",
 		"analytics": "947991e5-718d-4b38-95cb-d4d2563cb533"
 	},
 	"defaultProject": "angular-svg-icon-preloader-demo",
@@ -58,17 +52,25 @@
 	},
 	"targetDefaults": {
 		"build": {
-			"inputs": ["production", "^production"]
+			"inputs": ["production", "^production"],
+			"cache": true
 		},
 		"test": {
 			"inputs": [
 				"default",
 				"^production",
 				"{workspaceRoot}/jest.preset.js"
-			]
+			],
+			"cache": true
 		},
 		"e2e": {
-			"inputs": ["default", "^production"]
+			"inputs": ["default", "^production"],
+			"cache": true
+		},
+		"lint": {
+			"cache": true
 		}
-	}
+	},
+	"nxCloudAccessToken": "NzE4YmY1NGItODE3Zi00NjMyLTk0OWYtOWIzYzQyY2JjZDYxfHJlYWQtd3JpdGU=",
+	"parallel": 1
 }

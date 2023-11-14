@@ -5,3 +5,4 @@
 
 *.yaml
 *.md
+/.nx/cache
