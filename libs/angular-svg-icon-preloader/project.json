@@ -4,12 +4,19 @@
 	"projectType": "library",
 	"sourceRoot": "libs/angular-svg-icon-preloader/src",
 	"prefix": "angular-svg-icon-preloader",
+	"tags": ["scope:lib", "type:util"],
+	"generators": {
+		"@schematics/angular:component": {
+			"style": "scss"
+		}
+	},
 	"targets": {
 		"build": {
 			"executor": "@nrwl/angular:package",
 			"options": {
 				"tsConfig": "libs/angular-svg-icon-preloader/tsconfig.lib.json",
-				"project": "libs/angular-svg-icon-preloader/ng-package.json"
+				"project": "libs/angular-svg-icon-preloader/ng-package.json",
+				"updateBuildableProjectDepsInPackageJson": true
 			},
 			"configurations": {
 				"production": {
@@ -32,11 +39,5 @@
 				"passWithNoTests": true
 			}
 		}
-	},
-	"generators": {
-		"@schematics/angular:component": {
-			"style": "scss"
-		}
-	},
-	"tags": ["scope:lib", "type:util"]
+	}
 }

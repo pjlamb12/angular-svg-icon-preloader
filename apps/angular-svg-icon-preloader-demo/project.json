@@ -2,13 +2,14 @@
 	"name": "angular-svg-icon-preloader-demo",
 	"$schema": "../../node_modules/nx/schemas/project-schema.json",
 	"projectType": "application",
+	"sourceRoot": "apps/angular-svg-icon-preloader-demo/src",
+	"prefix": "angular-svg-icon-preloader",
+	"tags": [],
 	"generators": {
 		"@schematics/angular:component": {
 			"style": "scss"
 		}
 	},
-	"sourceRoot": "apps/angular-svg-icon-preloader-demo/src",
-	"prefix": "angular-svg-icon-preloader",
 	"targets": {
 		"build": {
 			"executor": "@angular-devkit/build-angular:browser",
@@ -90,6 +91,5 @@
 				"passWithNoTests": true
 			}
 		}
-	},
-	"tags": []
+	}
 }

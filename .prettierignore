@@ -6,3 +6,4 @@
 *.yaml
 *.md
 /.nx/cache
+/.nx/workspace-data
