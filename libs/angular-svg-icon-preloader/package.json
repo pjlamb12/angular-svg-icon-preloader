@@ -1,6 +1,6 @@
 {
 	"name": "angular-svg-icon-preloader",
-	"version": "8.0.0",
+	"version": "19.0.0",
 	"homepage": "https://github.com/pjlamb12/angular-svg-icon-preloader",
 	"description": "An Angular library that pre loads SVG icons for use with angular-svg-icon",
 	"bugs": {
