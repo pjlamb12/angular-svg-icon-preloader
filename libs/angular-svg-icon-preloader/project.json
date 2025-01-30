@@ -12,11 +12,10 @@
 	},
 	"targets": {
 		"build": {
-			"executor": "@nrwl/angular:package",
+			"executor": "@nx/angular:package",
 			"options": {
 				"tsConfig": "libs/angular-svg-icon-preloader/tsconfig.lib.json",
-				"project": "libs/angular-svg-icon-preloader/ng-package.json",
-				"updateBuildableProjectDepsInPackageJson": true
+				"project": "libs/angular-svg-icon-preloader/ng-package.json"
 			},
 			"configurations": {
 				"production": {
@@ -25,7 +24,7 @@
 			}
 		},
 		"lint": {
-			"executor": "@nrwl/linter:eslint",
+			"executor": "@nx/linter:eslint",
 			"options": {
 				"lintFilePatterns": [
 					"libs/angular-svg-icon-preloader/src/**/*.ts"
@@ -33,7 +32,7 @@
 			}
 		},
 		"test": {
-			"executor": "@nrwl/jest:jest",
+			"executor": "@nx/jest:jest",
 			"options": {
 				"jestConfig": "libs/angular-svg-icon-preloader/jest.config.js",
 				"passWithNoTests": true
