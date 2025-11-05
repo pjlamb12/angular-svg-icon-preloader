@@ -26,10 +26,10 @@
 	},
 	"license": "MIT",
 	"peerDependencies": {
-		"@angular/common": "^19.0.0",
-		"@angular/core": "^19.0.0",
-		"@angular/platform-browser-dynamic": "^19.0.0",
-		"angular-svg-icon": "^19.0.0",
+		"@angular/common": "^19.0.0 || ^20.0.0",
+		"@angular/core": "^19.0.0 || ^20.0.0",
+		"@angular/platform-browser-dynamic": "^19.0.0 || ^20.0.0",
+		"angular-svg-icon": "^19.0.0 || ^20.0.0",
 		"rxjs": ">=6.6.3"
 	},
 	"dependencies": {
