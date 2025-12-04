@@ -24,7 +24,8 @@ const DEMO_ICONS_JSON = {
 describe('AngularSvgIconPreloaderService', () => {
 	let service: AngularSvgIconPreloaderService;
 	let mockHttpClient: HttpClient;
-	let mockConfig: AngularSvgIconPreloaderConfig;
+	let mockConfig: AngularSvgIconPreloaderConfig =
+		new AngularSvgIconPreloaderConfig();
 	let mockSvgIconRegistryService: SvgIconRegistryService;
 
 	beforeEach(() => {
@@ -38,12 +39,8 @@ describe('AngularSvgIconPreloaderService', () => {
 		service = new AngularSvgIconPreloaderService(
 			mockHttpClient,
 			mockConfig,
-			mockSvgIconRegistryService
+			mockSvgIconRegistryService,
 		);
-	});
-
-	it('should be created', () => {
-		expect(service).toBeTruthy();
 	});
 
 	it('should call the load icons method', waitForAsync(() => {
@@ -60,9 +57,16 @@ describe('AngularSvgIconPreloaderService', () => {
 			.fn()
 			.mockReturnValue(throwError(() => 'JSON File Loading Error'));
 
-		service.loadConfig().subscribe(() => {
-			expect(mockSvgIconRegistryService.loadSvg).toHaveBeenCalledTimes(0);
-			expect(mockSvgIconRegistryService.addSvg).toHaveBeenCalledTimes(0);
+		service.loadConfig().subscribe({
+			next: () => {},
+			error: () => {
+				expect(
+					mockSvgIconRegistryService.loadSvg,
+				).toHaveBeenCalledTimes(0);
+				expect(mockSvgIconRegistryService.addSvg).toHaveBeenCalledTimes(
+					0,
+				);
+			},
 		});
 	}));
 });

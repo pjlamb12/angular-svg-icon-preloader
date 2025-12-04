@@ -1,38 +1,46 @@
 {
 	"root": true,
-	"ignorePatterns": ["**/*"],
-	"plugins": ["@nrwl/nx"],
+	"ignorePatterns": ["projects/**/*"],
 	"overrides": [
 		{
-			"files": ["*.ts", "*.tsx", "*.js", "*.jsx"],
+			"files": ["*.html"],
+			"extends": ["plugin:@angular-eslint/template/recommended"],
+			"parser": "@angular-eslint/template-parser",
+			"parserOptions": {
+				"project": "./tsconfig.json"
+			},
 			"rules": {
-				"@nrwl/nx/enforce-module-boundaries": [
-					"error",
-					{
-						"enforceBuildableLibDependency": true,
-						"allow": [],
-						"depConstraints": [
-							{
-								"sourceTag": "*",
-								"onlyDependOnLibsWithTags": ["*"]
-							}
-						]
-					}
-				]
+				"@angular-eslint/template/prefer-self-closing-tags": ["error"]
 			}
 		},
 		{
-			"files": ["*.ts", "*.tsx"],
-			"extends": ["plugin:@nrwl/nx/typescript"],
+			"files": ["*.ts"],
 			"parserOptions": {
-				"project": "./tsconfig.*?.json"
+				"project": ["tsconfig.json", "e2e/tsconfig.json"],
+				"createDefaultProgram": true
 			},
-			"rules": {}
-		},
-		{
-			"files": ["*.js", "*.jsx"],
-			"extends": ["plugin:@nrwl/nx/javascript"],
-			"rules": {}
+			"extends": [
+				"plugin:@angular-eslint/recommended",
+				"plugin:@angular-eslint/template/process-inline-templates"
+			],
+			"rules": {
+				"@angular-eslint/component-selector": [
+					"error",
+					{
+						"prefix": "app",
+						"style": "kebab-case",
+						"type": "element"
+					}
+				],
+				"@angular-eslint/directive-selector": [
+					"error",
+					{
+						"prefix": "app",
+						"style": "camelCase",
+						"type": "attribute"
+					}
+				]
+			}
 		}
 	]
 }
