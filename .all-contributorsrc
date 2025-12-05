@@ -1,26 +1,20 @@
 {
-  "projectName": "angular-svg-icon-preloader",
-  "projectOwner": "pjlamb12",
-  "repoType": "github",
-  "repoHost": "https://github.com",
-  "files": [
-    "README.md"
-  ],
-  "imageSize": 100,
-  "commit": true,
-  "commitConvention": "angular",
-  "contributors": [
-    {
-      "login": "pjlamb12",
-      "name": "Preston Lamb",
-      "avatar_url": "https://avatars3.githubusercontent.com/u/2006222?v=4",
-      "profile": "https://github.com/pjlamb12",
-      "contributions": [
-        "code",
-        "doc",
-        "test"
-      ]
-    }
-  ],
-  "contributorsPerLine": 7
+	"projectName": "angular-svg-icon-preloader",
+	"projectOwner": "pjlamb12",
+	"repoType": "github",
+	"repoHost": "https://github.com",
+	"files": ["README.md"],
+	"imageSize": 100,
+	"commit": true,
+	"commitConvention": "angular",
+	"contributors": [
+		{
+			"login": "pjlamb12",
+			"name": "Preston Lamb",
+			"avatar_url": "https://avatars3.githubusercontent.com/u/2006222?v=4",
+			"profile": "https://github.com/pjlamb12",
+			"contributions": ["code", "doc", "test"]
+		}
+	],
+	"contributorsPerLine": 7
 }

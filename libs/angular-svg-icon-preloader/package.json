@@ -1,14 +1,14 @@
 {
 	"name": "angular-svg-icon-preloader",
-	"version": "19.0.0",
-	"homepage": "https://github.com/pjlamb12/angular-svg-icon-preloader",
+	"version": "20.0.0",
+	"homepage": "https://github.com/vinlos/angular-svg-icon-preloader",
 	"description": "An Angular library that pre loads SVG icons for use with angular-svg-icon",
 	"bugs": {
-		"url": "https://github.com/pjlamb12/angular-svg-icon-preloader/issues"
+		"url": "https://github.com/vinlos/angular-svg-icon-preloader/issues"
 	},
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/pjlamb12/angular-svg-icon-preloader"
+		"url": "https://github.com/vinlos/angular-svg-icon-preloader"
 	},
 	"keywords": [
 		"angular",
@@ -26,9 +26,9 @@
 	},
 	"license": "MIT",
 	"peerDependencies": {
-		"@angular/common": "^19.0.0",
-		"@angular/core": "^19.0.0",
-		"@angular/platform-browser-dynamic": "^19.0.0",
+		"@angular/common": "^20.0.0",
+		"@angular/core": "^20.0.0",
+		"@angular/platform-browser-dynamic": "^20.0.0",
 		"angular-svg-icon": "^19.0.0",
 		"rxjs": ">=6.6.3"
 	},

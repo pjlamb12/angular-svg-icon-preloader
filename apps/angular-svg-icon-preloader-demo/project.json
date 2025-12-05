@@ -85,9 +85,9 @@
 			}
 		},
 		"test": {
-			"executor": "@nrwl/jest:jest",
+			"executor": "@nx/jest:jest",
 			"options": {
-				"jestConfig": "apps/angular-svg-icon-preloader-demo/jest.config.js",
+				"jestConfig": "libs/angular-svg-icon-preloader/jest.config.js",
 				"passWithNoTests": true
 			}
 		}

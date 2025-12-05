@@ -1,0 +1,86 @@
+name: Build and publish
+
+on:
+  push:
+    branches:
+      - "main"
+      - "release/**"
+  pull_request:
+    branches: [main]
+    paths-ignore:
+      - '**.md'
+
+env:
+  NX_BRANCH: ${{ github.event.number }}
+  NX_RUN_GROUP: ${{ github.run_id }}
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [22.x]
+
+    steps:
+      - name: Set up Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node-version }}
+          registry-url: 'https://registry.npmjs.org'
+          scope: '@vinlos'
+
+      - name: Checking out repository
+        uses: actions/checkout@v4
+
+      - name: Prepare version
+        if: startsWith(github.ref, 'refs/heads/release/')
+        run: |
+          # Extract the base version from the branch name
+          echo "GITHUB_REF=$GITHUB_REF"
+          BASE_VERSION=$(echo "${GITHUB_REF#refs/heads/release/}")
+          echo "BASE_VERSION=$BASE_VERSION"
+
+          # Get the latest tag matching the base version
+          git fetch --tags
+          LATEST_TAG=$(git tag --list "v${BASE_VERSION}.*" --sort=-v:refname | head -1 || echo "v${BASE_VERSION}.-1")
+
+          # Increment the patch version
+          PATCH_VERSION=$(echo $LATEST_TAG | awk -F. '{print $NF+1}')
+          VERSION="${BASE_VERSION}.${PATCH_VERSION}"
+
+          # Prepare the new version and create the tag
+          npm version $VERSION --workspaces true --include-workspace-root true --workspaces-update false --git-tag-version false
+
+          # Share version with next steps
+          echo "VERSION=$VERSION" >> $GITHUB_ENV
+
+      - name: Cache dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
+          restore-keys: |
+            ${{ runner.os }}-node-
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        shell: bash
+        run: npm run build:lib
+
+      - name: Tag
+        if: startsWith(github.ref, 'refs/heads/release/')
+        run: |
+          git tag v$VERSION
+          git push origin v$VERSION
+
+      - name: Publish
+        if: startsWith(github.ref, 'refs/heads/release/')
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          echo "Publishing version $VERSION to npm"
+          cd dist/libs/angular-svg-icon-preloader
+          npm publish --access public
