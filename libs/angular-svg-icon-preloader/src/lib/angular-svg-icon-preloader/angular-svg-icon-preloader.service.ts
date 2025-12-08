@@ -1,5 +1,5 @@
 import { HttpClient } from '@angular/common/http';
-import { Injectable, Optional } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
 import { SvgIconRegistryService } from 'angular-svg-icon';
 import { EMPTY, Observable, Subject } from 'rxjs';
 import { catchError, take, tap } from 'rxjs/operators';
@@ -10,22 +10,19 @@ import { CustomIconData, IconImageFile } from '../icon.interface';
 	providedIn: 'root',
 })
 export class AngularSvgIconPreloaderService {
-	private configUrl: string = './assets/icons.json';
+	private readonly _http = inject(HttpClient);
+	private readonly _iconRegistry = inject(SvgIconRegistryService);
+	private readonly _config = inject(AngularSvgIconPreloaderConfig, {
+		optional: true,
+	});
+
+	private readonly configUrl: string =
+		this._config?.configUrl || './assets/icons.json';
 	private iconsFileData: {
 		iconImageFiles: IconImageFile[];
 		customIcons: CustomIconData[];
 	} = { customIcons: [], iconImageFiles: [] };
 	public configSubject: Subject<any> = new Subject<any>();
-
-	constructor(
-		private _http: HttpClient,
-		@Optional() config: AngularSvgIconPreloaderConfig,
-		private _iconRegistry: SvgIconRegistryService
-	) {
-		if (config && config.configUrl) {
-			this.configUrl = config.configUrl;
-		}
-	}
 
 	loadConfig(): Observable<any> {
 		return this._http
