@@ -24,7 +24,7 @@
 			}
 		},
 		"lint": {
-			"executor": "@nx/linter:eslint",
+			"executor": "@nx/eslint:lint",
 			"options": {
 				"lintFilePatterns": [
 					"libs/angular-svg-icon-preloader/src/**/*.ts"
@@ -35,7 +35,8 @@
 			"executor": "@nx/jest:jest",
 			"options": {
 				"jestConfig": "libs/angular-svg-icon-preloader/jest.config.js",
-				"passWithNoTests": true
+				"passWithNoTests": true,
+				"tsConfig": "libs/angular-svg-icon-preloader/tsconfig.spec.json"
 			}
 		}
 	}

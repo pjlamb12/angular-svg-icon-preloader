@@ -7,7 +7,7 @@
 	"implicitDependencies": ["angular-svg-icon-preloader-demo"],
 	"targets": {
 		"e2e": {
-			"executor": "@nrwl/cypress:cypress",
+			"executor": "@nx/cypress:cypress",
 			"options": {
 				"cypressConfig": "apps/angular-svg-icon-preloader-demo-e2e/cypress.json",
 				"tsConfig": "apps/angular-svg-icon-preloader-demo-e2e/tsconfig.e2e.json",
@@ -20,7 +20,7 @@
 			}
 		},
 		"lint": {
-			"executor": "@nrwl/linter:eslint",
+			"executor": "@nx/eslint:lint",
 			"options": {
 				"lintFilePatterns": [
 					"apps/angular-svg-icon-preloader-demo-e2e/**/*.{js,ts}"

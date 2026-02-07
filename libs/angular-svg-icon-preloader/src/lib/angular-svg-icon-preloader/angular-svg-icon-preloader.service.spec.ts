@@ -3,7 +3,6 @@ import { of, throwError } from 'rxjs';
 import { AngularSvgIconPreloaderService } from './angular-svg-icon-preloader.service';
 import { HttpClient } from '@angular/common/http';
 import { SvgIconRegistryService } from 'angular-svg-icon';
-
 const DEMO_ICONS_JSON = {
 	iconImageFiles: [
 		{
@@ -19,12 +18,10 @@ const DEMO_ICONS_JSON = {
 		},
 	],
 };
-
 describe('AngularSvgIconPreloaderService', () => {
 	let service: AngularSvgIconPreloaderService;
 	let mockHttpClient: HttpClient;
 	let mockSvgIconRegistryService: SvgIconRegistryService;
-
 	beforeEach(() => {
 		mockHttpClient = {
 			get: null,
@@ -43,28 +40,22 @@ describe('AngularSvgIconPreloaderService', () => {
 				AngularSvgIconPreloaderService,
 			],
 		});
-
 		service = TestBed.inject(AngularSvgIconPreloaderService);
 	});
-
 	it('should be created', () => {
 		expect(service).toBeTruthy();
 	});
-
 	it('should call the load icons method', waitForAsync(() => {
 		mockHttpClient.get = jest.fn().mockReturnValue(of(DEMO_ICONS_JSON));
-
 		service.loadConfig().subscribe(() => {
 			expect(mockSvgIconRegistryService.loadSvg).toHaveBeenCalledTimes(1);
 			expect(mockSvgIconRegistryService.addSvg).toHaveBeenCalledTimes(1);
 		});
 	}));
-
 	it('should handle an error when loading the JSON file', waitForAsync(() => {
 		mockHttpClient.get = jest
 			.fn()
 			.mockReturnValue(throwError(() => 'JSON File Loading Error'));
-
 		service.loadConfig().subscribe(() => {
 			expect(mockSvgIconRegistryService.loadSvg).toHaveBeenCalledTimes(0);
 			expect(mockSvgIconRegistryService.addSvg).toHaveBeenCalledTimes(0);
