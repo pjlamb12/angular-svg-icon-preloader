@@ -77,7 +77,7 @@
 			}
 		},
 		"lint": {
-			"executor": "@nrwl/linter:eslint",
+			"executor": "@nx/eslint:lint",
 			"options": {
 				"lintFilePatterns": [
 					"apps/angular-svg-icon-preloader-demo/src/**/*.ts"
